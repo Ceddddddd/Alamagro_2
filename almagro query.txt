@@ -1,0 +1,34 @@
+create database almagro
+
+
+CREATE TABLE user (
+    user_id INT PRIMARY KEY,
+    username VARCHAR(50),
+);
+CREATE TABLE Customer (
+    customer_id INT PRIMARY KEY,
+    firstname VARCHAR(50),
+    lastname VARCHAR(50),
+    phone VARCHAR(15),
+    email VARCHAR(100)
+);
+
+-- Create Rooms table
+CREATE TABLE rooms (
+    room_id INT PRIMARY KEY,
+    room_type VARCHAR(50),
+    cost DECIMAL(10, 2),
+    pax INT,
+    bed VARCHAR(20),
+    available VARCHAR(20)
+);
+
+-- Create Reservation table
+CREATE TABLE reservation (
+    reservation_id INT PRIMARY KEY,
+    customer_id INT,
+    room_id INT,
+    reserved_date DATETIME,
+    FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
+    FOREIGN KEY (room_id) REFERENCES Rooms(room_id)
+);
